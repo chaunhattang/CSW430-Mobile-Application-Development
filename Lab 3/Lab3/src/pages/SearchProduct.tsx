@@ -42,39 +42,37 @@ export default function SearchProduct() {
     };
 
     return (
-        <View className="flex-1 bg-white px-4 pt-4">
-            <Card className=' pt-2 mt-2'>
-                <Text className=" mx-4 text-xl font-bold text-gray-800 mt-2 mb-4">
-                    Search Products
-                </Text>
+        <View className="flex-1 bg-white pt-4">
+            <Text className=" mx-4 text-2xl font-bold text-gray-800 mt-2 mb-4">
+                Search Products
+            </Text>
 
-                <TextInput
-                    className=" mx-4 border border-gray-300 rounded-lg px-4  py-2 mb-3 text-gray-700 bg-white"
-                    placeholder="Enter keyword..."
-                    placeholderTextColor="#9ca3af"
-                    value={value}
-                    onChangeText={setValue}
-                />
+            <TextInput
+                className=" mx-4 border border-gray-300 rounded-lg px-4  py-2 mb-3 text-gray-700 bg-white"
+                placeholder="Enter keyword..."
+                placeholderTextColor="#9ca3af"
+                value={value}
+                onChangeText={setValue}
+            />
 
-                <Pressable
-                    onPress={searchProduct}
-                    className=" mx-4 bg-blue-500 rounded-lg py-3 items-center mb-4 active:bg-blue-600"
-                >
-                    <Text className="text-white font-bold">SEARCH</Text>
-                </Pressable>
+            <Pressable
+                onPress={searchProduct}
+                className=" mx-4 bg-blue-500 rounded-lg py-3 items-center mb-4 active:bg-blue-600"
+            >
+                <Text className="text-white font-bold">SEARCH</Text>
+            </Pressable>
 
-                <FlatList
-                    data={data}
-                    keyExtractor={item => item.id.toString()}
-                    renderItem={({ item }) => (
-                        <Product
-                            key={item.id}
-                            props={item}
-                            handleDelete={() => handleDelete(item.id)}
-                        />
-                    )}
-                />
-            </Card>
+            <FlatList
+                data={data}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({ item }) => (
+                    <Product
+                        key={item.id}
+                        props={item}
+                        handleDelete={() => handleDelete(item.id)}
+                    />
+                )}
+            />
         </View>
     );
 }

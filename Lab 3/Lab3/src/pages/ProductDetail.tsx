@@ -67,7 +67,7 @@ export default function ProductDetail() {
     return (
         <ScrollView className="flex-1 bg-white px-4 pt-6">
             <Card className='px-4 py-4'>
-                <Text className="text-xl font-bold text-gray-800 pb-4 mb-2">
+                <Text className="text-2xl font-bold text-gray-800 pb-4 mb-2">
                     Product Detail
                 </Text>
 

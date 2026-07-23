@@ -55,7 +55,7 @@ export default function AddPage() {
     return (
         <ScrollView className="flex-1 bg-white px-4 pt-4">
             <Card className="px-5 py-2 mt-2">
-                <Text className="text-xl font-bold text-blue-700 mt-2 mb-4 ">
+                <Text className="text-2xl font-bold text-blue-700 mt-2 mb-4 ">
                     Add a Product
                 </Text>
 

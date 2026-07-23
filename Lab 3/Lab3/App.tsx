@@ -6,7 +6,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import './global.css';
 
 import BottomNav from './src/layout/BottomNav';
-
 import ProductList from './src/pages/ProductList';
 import AddPage from './src/pages/AddPage';
 import SearchProduct from './src/pages/SearchProduct';
@@ -27,42 +26,21 @@ declare global {
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
-const routeNameToKey: Record<string, string> = {
-    Products: 'products',
-    Add: 'add',
-    Search: 'search',
-    Detail: 'detail',
-};
-
-const keyToRouteName: Record<string, keyof RootTabParamList> = {
-    products: 'Products',
-    add: 'Add',
-    search: 'Search',
-    detail: 'Detail',
-};
-
 export default function App() {
     return (
         <SafeAreaProvider>
             <NavigationContainer>
                 <Tab.Navigator
                     screenOptions={{ headerShown: false }}
-                    tabBar={({ state, navigation }) => {
-                        const currentRouteName = state.routes[state.index].name;
-                        const activeKey = routeNameToKey[currentRouteName] || 'products';
-
-                        return (
-                            <BottomNav
-                                active={activeKey}
-                                onChange={(key) => {
-                                    const targetRoute = keyToRouteName[key];
-                                    if (targetRoute) {
-                                        navigation.navigate(targetRoute as any);
-                                    }
-                                }}
-                            />
-                        );
-                    }}
+                    tabBar={({ state, navigation }) => (
+                        <BottomNav
+                            active={state.routes[state.index].name.toLowerCase()}
+                            onChange={(key) => {
+                                const routeName = (key.charAt(0).toUpperCase() + key.slice(1)) as keyof RootTabParamList;
+                                navigation.navigate(routeName);
+                            }}
+                        />
+                    )}
                 >
                     <Tab.Screen name="Products" component={ProductList} />
                     <Tab.Screen name="Add" component={AddPage} />
